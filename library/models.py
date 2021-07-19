@@ -8,3 +8,12 @@ class Profile(models.Model):
 
     def __str__(self):
         return f'{self.user.username} Profile'
+    
+    
+class BookBorrowModel(models.Model):
+    user = models.ForeignKey(User,null=True,on_delete=models.CASCADE)
+    id = models.IntegerField(primary_key=True)
+    book =models.OneToOneField(Book,null=True,on_delete=models.CASCADE)
+    period=models.PositiveIntegerField(default=0)
+    def __str__(self):
+        return str(self.book)
